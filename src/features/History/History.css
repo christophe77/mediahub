@@ -1,0 +1,18 @@
+.historyTitle{
+    background-color: black;
+    color : white;
+    margin : -5px;
+    padding: 5px;
+    padding-top : 15px;
+    height : 45px;
+    font-size: 20px;
+    line-height: 1;
+}
+.historyContent{
+    padding : 5px;
+    color: #6082B6;
+}
+.movieLink{
+    cursor: pointer;
+    font-size: 18px;
+}
