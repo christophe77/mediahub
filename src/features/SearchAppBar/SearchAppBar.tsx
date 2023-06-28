@@ -18,7 +18,7 @@ export default function SearchAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static' sx={{ backgroundColor: 'black' }}>
         <Toolbar>
-          <History />
+          <History /> 
 
           <Typography
             variant='h6'

@@ -1,6 +1,9 @@
 .movieDetails {
   text-align: left;
 }
+.movieDetails > p {
+  line-height: 0;
+}
 .cardContainer {
   position: relative;
 }

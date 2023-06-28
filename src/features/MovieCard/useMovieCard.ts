@@ -6,18 +6,21 @@ import getPosterFromMovieTitle from '../../api/posters';
 
 const useMovieCard = () => {
   const [moviePoster, setMoviePoster] = useState<string>('');
+  const [movieBackdrop, setMovieBackdrop] = useState<string>('');
   const dispatch = useDispatch();
   const isChangingMovie = useSelector((state: RootState) => state.movieReducer.isChangingMovie);
 
   function handleClose(){
     dispatch(setCurrentMovie(emptyMovie));  
   }
-  async function getPoster(movieTitle: string) {
+  async function getPosters(movieTitle: string) {
     const rawPoster = await getPosterFromMovieTitle(movieTitle);
     const poster = `https://image.tmdb.org/t/p/w130_and_h195_bestv2${rawPoster.results[0].poster_path}`;
+    const backdrop = `https://image.tmdb.org/t/p/w130_and_h195_bestv2${rawPoster.results[0].backdrop_path}`;
     setMoviePoster(poster);
+    setMovieBackdrop(backdrop);
     dispatch(setIsChangingMovie(false));   
   }
-  return { getPoster, moviePoster, isChangingMovie, handleClose };
+  return { getPosters, moviePoster, isChangingMovie, handleClose, movieBackdrop };
 };
 export default useMovieCard;

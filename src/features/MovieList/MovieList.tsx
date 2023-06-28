@@ -4,7 +4,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import Chip from '@mui/material/Chip';
+import Grid from '@mui/material/Grid';
+import LoupeIcon from '@mui/icons-material/Loupe';
 import MovieCard from '../MovieCard/MovieCard';
 import useMovieList from './useMovieList';
 import ScrollTop from '../ScrollToTop/ScrollToTop';
@@ -30,32 +31,47 @@ export default function SimpleAccordion() {
                 key={movie.id}
                 onClick={() => handleMovieSelection(movie)}
               >
-                <ListItemText primary={movie.Title} secondary={movie['Release Date'] || '-'} />
+                <Grid container spacing={2} key={movie.id}>
+                  <Grid item xs={4} sx={{ display: 'flex' }}>
+                    <ListItemText primary={movie.Title} secondary={movie['Release Date'] || '-'} />
+                  </Grid>
+                  <Grid item xs={2} sx={{ display: 'flex' }}>
+                    <ListItemText primary={'Genre'} secondary={movie['Major Genre'] || 'Unknown'} />
+                  </Grid>
+                  <Grid item xs={4} sx={{ display: 'flex' }}>
+                    <ListItemAvatar>
+                      <div className='voteTitle'>IMDB Votes</div>
+                      <div className='voteCount'>{movie['IMDB Votes'] || '-'}</div>
+                    </ListItemAvatar>
 
-                <ListItemText
-                  primary={
-                    <Chip
-                      label={movie['Major Genre'] || '-'}
-                      sx={{ backgroundColor: '#454545', color: 'white' }}
+                    <ListItemAvatar>
+                      IMDB
+                      <Avatar
+                        sx={{ backgroundColor: '#454545', fontSize: 13, height: 35, width: 35 }}
+                      >
+                        {movie['IMDB Rating'] || '-'}
+                      </Avatar>
+                    </ListItemAvatar>
+                    <ListItemAvatar>
+                      Rotten
+                      <Avatar
+                        sx={{ backgroundColor: '#454545', fontSize: 13, height: 35, width: 35 }}
+                      >
+                        {movie['Rotten Tomatoes Rating'] || '-'}
+                      </Avatar>
+                    </ListItemAvatar>
+                  </Grid>
+                  <Grid item xs={2} sx={{ display: 'flex', textAlign:"right" }}>
+                    <ListItemText
+                      primary={
+                        <>
+                          <LoupeIcon sx={{mr:1}}/>
+                        </>
+                      }
+                      secondary={'Details'}
                     />
-                  }
-                />
-
-                <ListItemAvatar>
-                  <div className='voteTitle'>IMDB Votes</div>
-                  <div className='voteCount'>{movie['IMDB Votes'] || '-'}</div>
-                </ListItemAvatar>
-
-                <ListItemAvatar>
-                  IMDB
-                  <Avatar sx={{ backgroundColor: '#454545' }}>{movie['IMDB Rating'] || '-'}</Avatar>
-                </ListItemAvatar>
-                <ListItemAvatar>
-                  Rotten
-                  <Avatar sx={{ backgroundColor: '#454545' }}>
-                    {movie['Rotten Tomatoes Rating'] || '-'}
-                  </Avatar>
-                </ListItemAvatar>
+                  </Grid>
+                </Grid>
               </ListItem>
             ))}
         </List>

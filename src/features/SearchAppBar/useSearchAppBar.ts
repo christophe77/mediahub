@@ -22,9 +22,7 @@ useInterval(() => {
 }, 2000);
 
   async function handleSearchMovie(query: string, sortBy: string) {
-
     const ListMovies = await getMovies(query, sortBy);
-  
     dispatch(setCuratedMovieList(ListMovies))
   }
   return {setTyping, setSortBy};

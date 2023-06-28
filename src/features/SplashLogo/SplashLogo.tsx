@@ -26,7 +26,7 @@ export default function SplashLogo() {
           <img src={Logo} alt='' onLoad={() => setIsLoaded(true)} />
         </motion.div>
       </section>
-      
+      <h2>Use the search bar to find movies</h2>
     </div>
   );
 }

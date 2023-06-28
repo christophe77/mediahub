@@ -33,9 +33,9 @@ export default function History() {
         aria-label='open menu'
         sx={{ mr: 2 }}
       >
-        <ManageHistoryIcon />
+        <ManageHistoryIcon /> 
       </IconButton>
-
+      <small onClick={toggleDrawer(true)}>View history</small>
       <SwipeableDrawer
         anchor={'left'}
         open={isOpen}

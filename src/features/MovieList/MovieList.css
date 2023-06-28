@@ -10,7 +10,7 @@
   display: inline-block;
 }
 .listItem {
-  border-style: dashed;
+  border : 2px solid;
   margin-bottom: 15px;
   cursor: pointer;
 }
@@ -19,13 +19,12 @@
 }
 .voteCount {
   background-color: #454545;
-  font-size: 1.25rem;
+  font-size: 13px;
   line-height: 1;
   text-align: center;
   color: white;
-  height: 20px;
+  height: 18px;
   margin: auto;
   padding: 10px;
-  border-radius: 20%;
   margin-right: 15px;
 }

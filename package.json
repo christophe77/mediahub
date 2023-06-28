@@ -46,7 +46,6 @@
     "prettier": "^2.8.1"
   },
   "scripts": {
-    "starta": "cross-env PORT=3001 react-scripts start && cd ./api && npx nest start",
     "start": "concurrently \"cd ./api && npx nest start\" \"cross-env PORT=3001 react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
