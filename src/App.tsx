@@ -1,12 +1,12 @@
 import React from 'react';
-import Menu from './features/SearchAppBar/SearchAppBar';
+import SearchAppBar from './features/SearchAppBar/SearchAppBar';
 import './App.css';
 import MovieList from './features/MovieList/MovieList';
 
 function App() {
   return (
     <div className='App'>
-      <Menu />
+      <SearchAppBar />
       <MovieList />
     </div>
   );
