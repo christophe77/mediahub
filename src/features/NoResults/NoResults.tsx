@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import SearchIcon from '@mui/icons-material/Search';
 import { motion } from 'framer-motion';
-import Logo from '../../assets/images/logo.png';
-import './SplashLogo.css';
+import NoResultsIcon from '../../assets/images/no-results.svg';
+import './NoResults.css';
 
 const hiddenMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 30px, rgba(0,0,0,1) 30px, rgba(0,0,0,1) 30px)`;
 const visibleMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 0px, rgba(0,0,0,1) 0px, rgba(0,0,0,1) 30px)`;
 
-export default function SplashLogo() {
+export default function NoResults() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
   return (
@@ -24,8 +23,8 @@ export default function SplashLogo() {
           viewport={{ once: true }}
           onViewportEnter={() => setIsInView(true)}
         >
-          <img src={Logo} alt='' onLoad={() => setIsLoaded(true)} />
-          <h2>Use the search bar to <SearchIcon /> movies</h2>
+          <img src={NoResultsIcon} alt='' onLoad={() => setIsLoaded(true)} />
+          <h2>No movies found...</h2>
         </motion.div>
       </section>
     </div>

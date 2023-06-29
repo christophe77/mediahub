@@ -25,6 +25,7 @@ interface MovieState {
   isChangingMovie: boolean;
   orderBy: OrderBy;
   viewHistory: Movie[];
+  isEmptySearch: boolean;
 }
 
 const initialState = {
@@ -33,6 +34,7 @@ const initialState = {
   isChangingMovie: true,
   orderBy: 'Title',
   viewHistory: [],
+  isEmptySearch: false,
 } as MovieState;
 
 const movieSlice = createSlice({
@@ -47,6 +49,9 @@ const movieSlice = createSlice({
     },
     setCurrentMovie(state, action: PayloadAction<Movie>) {
       state.currentMovie = action.payload;
+    },
+    setIsEmptySearch(state, action: PayloadAction<boolean>) {
+      state.isEmptySearch = action.payload;
     },
     AddMovieToHistory(state, action: PayloadAction<Movie>) {
       const result = find(state.viewHistory, action.payload);
@@ -72,5 +77,6 @@ export const {
   setIsChangingMovie,
   setOrderBy,
   AddMovieToHistory,
+  setIsEmptySearch
 } = movieSlice.actions;
 export default movieSlice.reducer;

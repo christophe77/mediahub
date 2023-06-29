@@ -78,20 +78,20 @@ export default function MovieCard({ movie }: IMovieCardProps) {
               </Grid>
               <Grid item xs={6}>
                 <div className='movieDetails'>
-                  <Divider>GENERAL</Divider>
-                  <p><b>Major Genre :</b> {movie['Major Genre']}</p>
-                  <p><b>Release Date :</b> {movie['Release Date']}</p>
-                  <p><b>Distributor :</b> {movie.Distributor}</p>
-                  <p><b>Director :</b> {movie.Director}</p>
-                  <Divider>RATINGS</Divider>
-                  <p><b>IMDB Rating :</b> {movie['IMDB Rating']}</p>
-                  <p><b>IMDB Votes :</b> {movie['IMDB Votes']}</p>
-                  <p><b>Rotten Tomatoes Rating :</b> {movie['Rotten Tomatoes Rating']}</p>
-                  <Divider>FINANCIAL</Divider>
-                  <p><b>US Gross :</b> {movie['US Gross']}$</p>
-                  <p><b>US DVD Sales :</b> {movie['US DVD Sales']}</p>
-                  <p><b>Worldwide Gross :</b> {movie['Worldwide Gross']}$</p>
-                  <p><b>Production Budget :</b> {movie['Production Budget']}$</p>
+                  <Divider component="div" sx={{color:"black", fontWeight:"bold"}}>GENERAL</Divider>
+                  <b>Major Genre :</b> {movie['Major Genre']}<br/>
+                  <b>Release Date :</b> {movie['Release Date']}<br/>
+                  <b>Distributor :</b> {movie.Distributor}<br/>
+                  <b>Director :</b> {movie.Director}<br/>
+                  <Divider component="div" sx={{color:"black", fontWeight:"bold", mt:2}}>RATINGS</Divider>
+                  <b>IMDB Rating :</b> {movie['IMDB Rating']}<br/>
+                  <b>IMDB Votes :</b> {movie['IMDB Votes']}<br/>
+                  <b>Rotten Tomatoes Rating :</b> {movie['Rotten Tomatoes Rating']}<br/>
+                  <Divider component="div" sx={{color:"black", fontWeight:"bold", mt:2}}>FINANCIAL</Divider>
+                  <b>US Gross :</b> {movie['US Gross']}$<br/>
+                  <b>US DVD Sales :</b> {movie['US DVD Sales']}<br/>
+                  <b>Worldwide Gross :</b> {movie['Worldwide Gross']}$<br/>
+                  <b>Production Budget :</b> {movie['Production Budget']}$<br/>
                 </div>
               </Grid>
             </Grid>

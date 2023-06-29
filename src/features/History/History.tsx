@@ -1,7 +1,5 @@
 import * as React from 'react';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
-import IconButton from '@mui/material/IconButton';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import useHistory from './useHistory';
@@ -25,17 +23,12 @@ export default function History() {
 
   return (
     <div className='historyContainer'>
-      <IconButton
-        onClick={toggleDrawer(true)}
-        size='large'
-        edge='start'
-        color='inherit'
-        aria-label='open menu'
-        sx={{ mr: 2 }}
-      >
-        <ManageHistoryIcon /> 
-      </IconButton>
-      <small onClick={toggleDrawer(true)}>View history</small>
+      {viewHistory?.length > 0 && (
+        <small style={{ cursor: 'pointer' }} onClick={toggleDrawer(true)}>
+          View history
+        </small>
+      )}
+
       <SwipeableDrawer
         anchor={'left'}
         open={isOpen}
@@ -44,14 +37,19 @@ export default function History() {
       >
         <div className='historyContent'>
           <div className='historyTitle'>Movie views history</div>
-          <Stack direction='column' spacing={1} sx={{mt:2}}>
+          <Stack direction='column' spacing={1} sx={{ mt: 2 }}>
             {viewHistory.map((movie: Movie) => (
               <Chip
                 key={movie.id}
-                sx={{ backgroundColor: '#454545', color: "white" }}
+                sx={{
+                  backgroundColor: '#303030',
+                  color: 'white',
+                  ':hover': {
+                    bgcolor: '#454545',
+                  },
+                }}
                 onClick={() => handleMovieSelection(movie)}
                 label={movie.Title}
-                
               />
             ))}
           </Stack>

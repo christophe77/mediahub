@@ -10,10 +10,9 @@ const getMovies = async (query: string, sortBy: string): Promise<Movie[]> => {
       headers: { Authorization: `Bearer ${token}` },
     };
 
-    const {data}  = await axios.get<Movie[]>(`/movies?query=${query}&sortBy=${sortBy}`, config);
+    const { data } = await axios.get<Movie[]>(`/movies?query=${query}&sortBy=${sortBy}`, config);
 
     return data;
-
   } catch (error) {
     throw new Error('error');
   }

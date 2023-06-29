@@ -5,32 +5,29 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
-import LoupeIcon from '@mui/icons-material/Loupe';
 import MovieCard from '../MovieCard/MovieCard';
 import useMovieList from './useMovieList';
 import ScrollTop from '../ScrollToTop/ScrollToTop';
 import OrderBy from '../Filters/Filters';
 import SplashLogo from '../SplashLogo/SplashLogo';
+import NoResults from '../NoResults/NoResults';
 import { Movie } from '../../types/movie';
 import './MovieList.css';
 
 export default function SimpleAccordion() {
-  const { handleMovieSelection, curatedMovieList, currentMovie } = useMovieList();
+  const { handleMovieSelection, curatedMovieList, currentMovie, isEmptySearch } = useMovieList();
   return (
     <>
       <ScrollTop />
-      {!curatedMovieList || (curatedMovieList?.length === 0 && <SplashLogo />)}
+      {curatedMovieList?.length === 0 && !isEmptySearch && <SplashLogo />}
+      {curatedMovieList?.length === 0 && isEmptySearch && <NoResults />}
 
       <div className={'moviesContainer'}>
         <List sx={{ width: '100%', maxWidth: 900, bgcolor: 'transparent' }}>
           {curatedMovieList?.length > 0 && <OrderBy />}
           {curatedMovieList?.length > 0 &&
             curatedMovieList.map((movie: Movie) => (
-              <ListItem
-                className='listItem'
-                key={movie.id}
-                onClick={() => handleMovieSelection(movie)}
-              >
+              <ListItem className='listItem' key={movie.id}>
                 <Grid container spacing={2} key={movie.id}>
                   <Grid item xs={4} sx={{ display: 'flex' }}>
                     <ListItemText primary={movie.Title} secondary={movie['Release Date'] || '-'} />
@@ -61,14 +58,15 @@ export default function SimpleAccordion() {
                       </Avatar>
                     </ListItemAvatar>
                   </Grid>
-                  <Grid item xs={2} sx={{ display: 'flex', textAlign:"right" }}>
+                  <Grid
+                    item
+                    xs={2}
+                    sx={{ display: 'flex', cursor:"pointer" }}
+                    onClick={() => handleMovieSelection(movie)}
+                  >
                     <ListItemText
-                      primary={
-                        <>
-                          <LoupeIcon sx={{mr:1}}/>
-                        </>
-                      }
-                      secondary={'Details'}
+                      primary={<div className="more">+ Details</div>}
+                     
                     />
                   </Grid>
                 </Grid>
